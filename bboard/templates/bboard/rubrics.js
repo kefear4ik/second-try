@@ -1,4 +1,4 @@
-var domain = 'http://localhost:8000/'
+var domain = 'kefear4ik.pythonanywhere.com/'
 
 window.onload = function() {
     var list = document.getElementById('list');
@@ -10,17 +10,10 @@ window.onload = function() {
                 var data = JSON.parse(rubricListLoader.responseText);
                 var s = '<ul>';
                 for (i=0; i < data.length; i++) {
-                    d = data[i];
-                    detail_url = '<a href="' + domain +'api/rubrics/' +
-                    d.id + '/" class="detail">Вывести</a>;
-                    s +='<li>' + d.name + ' [' + detail_url + ']</li>';
+                    s +='<li>' + data[i].name + '</li>';
                 }
                 s += '</ul>'
                 list.innerHTML = s;
-                links = list.querySelectorAll('ul li a.detail');
-                for (var i = 0; i < links.length; i++) {
-                    links[i].addEvenListener('click', rubricLoad);
-                }
             }
         }
     }
